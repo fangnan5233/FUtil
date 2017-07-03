@@ -1,0 +1,16 @@
+# FUtil
+这个工具类就是为了方便自己写一些小的程序的时候不想引入太多jar包而写，主要还是懒不想多敲几下键盘
+
+eg:
+
+  U.Str.isBlank("adsf");
+  
+  U.Date.toString(new Date());
+  
+  U.File.copy("d:/canlaoshi.rmvb","e:/malaoshi.rmvb");
+  
+  U.Prop.getValue("meinv","bingbing");
+  
+  如上大致包含的工具类就是这几个吧，还借鉴了guava写了几个U.newArrayList()等
+  
+  
