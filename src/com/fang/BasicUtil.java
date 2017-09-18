@@ -11,6 +11,12 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.fang.collection.UArrayList;
+import com.fang.collection.UHashMap;
+import com.fang.collection.UHashSet;
+import com.fang.collection.ULinkedHashMap;
+import com.fang.collection.ULinkedList;
+
 public abstract class BasicUtil {
 
 	public static final boolean IS_WINDOWS = System.getProperty("os.name")
@@ -86,7 +92,25 @@ public abstract class BasicUtil {
 		return new TreeSet<E>();
 	}
 	
+	public static <K,V> UHashMap<K, V> newUHashMap(){
+		return UHashMap.create();
+	}
 	
+	public static <K,V> ULinkedHashMap<K, V> newULinkedHashMap(){
+		return ULinkedHashMap.create();
+	}
+	
+	public static <E> UHashSet<E> newUHashSet(){
+		return UHashSet.create();
+	}
+	
+	public static <E> UArrayList<E> newUArrayList(){
+		return UArrayList.create();
+	}
+	
+	public static <E> ULinkedList<E> newULinkedList(){
+		return ULinkedList.create();
+	}
 	/**
 	 * 生成随机数
 	 * @param l
