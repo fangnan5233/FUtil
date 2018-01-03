@@ -2,13 +2,15 @@ package com.fang.collection;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
+import com.fang.lang.Getter;
 /**
  * 继承自 ArrayList
  * @author fang
  *
  * @param <E>
  */
-public class UArrayList<E> extends ArrayList<E> {
+public class UArrayList<E> extends ArrayList<E> implements Getter{
 
 	public UArrayList(){
 	}
@@ -22,7 +24,7 @@ public class UArrayList<E> extends ArrayList<E> {
 		return this;
 	}
 	
-	public UArrayList<E> set(Collection<E> c){
+	public UArrayList<E> setAll(Collection<E> c){
 		super.addAll(c);
 		return this;
 	}
@@ -35,10 +37,6 @@ public class UArrayList<E> extends ArrayList<E> {
 	public UArrayList<E> delete(int index){
 		super.remove(index);
 		return this;
-	}
-	
-	public <E> E getAs(int index){
-		return (E)this.get(index);
 	}
 	
 	public String getStr(int index) {
@@ -72,5 +70,17 @@ public class UArrayList<E> extends ArrayList<E> {
 	public boolean isNull(int index) {
 		return get(index) == null;
 	}
-	
+
+	@Override
+	@SuppressWarnings({ "unchecked", "hiding" })
+	public <E> E getter(Object o) {
+		return (E)this.get((int)o);
+	}
+
+	@Override
+	@SuppressWarnings({ "unchecked", "hiding" })
+	public <E> E getter(Object o, E e) {
+		Object a = this.getter(o);
+		return (E) (a == null ? e:a);
+	}
 }

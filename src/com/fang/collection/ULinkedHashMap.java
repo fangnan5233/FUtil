@@ -2,6 +2,8 @@ package com.fang.collection;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import com.fang.lang.Getter;
 /**
  * 继承自 LinkedHashMap
  * @author fang
@@ -9,7 +11,7 @@ import java.util.Map;
  * @param <K>
  * @param <V>
  */
-public class ULinkedHashMap<K,V> extends LinkedHashMap<K,V> {
+public class ULinkedHashMap<K,V> extends LinkedHashMap<K,V> implements Getter{
 
 	public ULinkedHashMap(){
 	}
@@ -31,10 +33,6 @@ public class ULinkedHashMap<K,V> extends LinkedHashMap<K,V> {
 	public ULinkedHashMap<K,V> delete(K key){
 		super.remove(key);
 		return this;
-	}
-	
-	public <T> T getAs(Object key) {
-		return (T)get(key);
 	}
 	
 	public String getStr(Object key) {
@@ -72,6 +70,17 @@ public class ULinkedHashMap<K,V> extends LinkedHashMap<K,V> {
 	 */
 	public boolean isNull(Object key) {
 		return get(key) == null;
+	}
+
+	@Override
+	public <T> T getter(Object o) {
+		return (T)get(o);
+	}
+	
+	@Override
+	public <T> T getter(Object o, T def) {
+		Object v = this.getter(o);
+		return (T) (v==null ? def : v);
 	}
 	
 }

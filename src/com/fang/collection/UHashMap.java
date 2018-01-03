@@ -2,6 +2,8 @@ package com.fang.collection;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.fang.lang.Getter;
 /**
  * 继承自 HashMap
  * @author fang
@@ -9,7 +11,7 @@ import java.util.Map;
  * @param <K>
  * @param <V>
  */
-public class UHashMap<K,V> extends HashMap<K,V> {
+public class UHashMap<K,V> extends HashMap<K,V> implements Getter {
 
 	public UHashMap(){
 	}
@@ -33,9 +35,7 @@ public class UHashMap<K,V> extends HashMap<K,V> {
 		return this;
 	}
 	
-	public <T> T getAs(Object key) {
-		return (T)get(key);
-	}
+	
 	
 	public String getStr(Object key) {
 		Object s = get(key);
@@ -73,5 +73,15 @@ public class UHashMap<K,V> extends HashMap<K,V> {
 	public boolean isNull(Object key) {
 		return get(key) == null;
 	}
+
+	@Override
+	public <T> T getter(Object o) {
+		return (T)get(o);
+	}
 	
+	@Override
+	public <T> T getter(Object o, T def) {
+		Object v = this.getter(o);
+		return (T) (v==null ? def : v);
+	}
 }

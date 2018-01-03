@@ -3,7 +3,7 @@ package com.fang.collection;
 import java.util.Collection;
 import java.util.HashSet;
 
-public class UHashSet<E> extends HashSet<E> {
+public class UHashSet<E> extends HashSet<E>{
 
 	public UHashSet(){}
 	
@@ -16,7 +16,7 @@ public class UHashSet<E> extends HashSet<E> {
 		return this;
 	}
 	
-	public UHashSet<E> set(Collection<E> c){
+	public UHashSet<E> setAll(Collection<E> c){
 		super.addAll(c);
 		return this;
 	}
@@ -30,8 +30,6 @@ public class UHashSet<E> extends HashSet<E> {
 		super.remove(index);
 		return this;
 	}
-	
-	public <E> E getAs(int index){
-		return null;
-	}
+
+
 }

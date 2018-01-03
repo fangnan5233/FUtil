@@ -1,10 +1,11 @@
 package com.fang.collection;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
-public class ULinkedList<E> extends LinkedList<E> {
+import com.fang.lang.Getter;
+
+public class ULinkedList<E> extends LinkedList<E> implements Getter{
 
 	public ULinkedList(){
 	}
@@ -18,7 +19,7 @@ public class ULinkedList<E> extends LinkedList<E> {
 		return this;
 	}
 	
-	public ULinkedList<E> set(Collection<E> c){
+	public ULinkedList<E> setAll(Collection<E> c){
 		super.addAll(c);
 		return this;
 	}
@@ -31,10 +32,6 @@ public class ULinkedList<E> extends LinkedList<E> {
 	public ULinkedList<E> delete(int index){
 		super.remove(index);
 		return this;
-	}
-	
-	public <E> E getAs(int index){
-		return (E)this.get(index);
 	}
 	
 	public String getStr(int index) {
@@ -60,7 +57,6 @@ public class ULinkedList<E> extends LinkedList<E> {
 		return (Boolean)get(index);
 	}
 	
-	
 	public boolean notNull(int index) {
 		return get(index) != null;
 	}
@@ -69,4 +65,16 @@ public class ULinkedList<E> extends LinkedList<E> {
 		return get(index) == null;
 	}
 	
+	@Override
+	@SuppressWarnings({ "unchecked", "hiding" })
+	public <E> E getter(Object o) {
+		return (E)this.get((int)o);
+	}
+
+	@Override
+	@SuppressWarnings({ "unchecked", "hiding" })
+	public <E> E getter(Object o, E e) {
+		Object a = this.getter(o);
+		return (E) (a == null ? e:a);
+	}
 }
